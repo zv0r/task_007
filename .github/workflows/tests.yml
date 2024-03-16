@@ -34,7 +34,9 @@ jobs:
     
     - name: Check with cppcheck
       run: |
-        cppcheck --enable=all --suppress=missingIncludeSystem --error-exitcode=1 ./src/
+        if [ $(find ./src -type f -name "*.[ch]" | wc -l) -gt 0 ]; then
+            cppcheck --enable=all --suppress=missingIncludeSystem --error-exitcode=1 ./src/
+        fi
     
     - name: Make optional Makefile target show_str if present
       working-directory: ./src
