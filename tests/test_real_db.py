@@ -6,10 +6,10 @@ import pytest
 B_FILE_PATH = './bin/real_db'
 DATA_SAMPLES_DIR = './data-samples'
 SAMPLE_DB_FILE_NAME = 'task007.db'
-SAMPLE_DB_FILE_COPY = 'pytest_sample_db_copy.db'
+SAMPLE_DB_FILE_COPY = './tests/task007.db'
 
 if os.path.isfile(B_FILE_PATH):
-    shutil.copy(os.path.join(DATA_SAMPLES_DIR, SAMPLE_DB_FILE_NAME), os.path.join(DATA_SAMPLES_DIR, SAMPLE_DB_FILE_COPY))
+    shutil.copy(os.path.join(DATA_SAMPLES_DIR, SAMPLE_DB_FILE_NAME), SAMPLE_DB_FILE_COPY)
 
     def test_real_db_1():
         result = run([B_FILE_PATH], input='EXIT', encoding='utf-8', stdout=PIPE)
@@ -55,8 +55,6 @@ if os.path.isfile(B_FILE_PATH):
         result = run([B_FILE_PATH], input='REMOVE\n20\nSHOWALL\nEXIT', encoding='utf-8', stdout=PIPE)
         assert result.returncode == 0
         assert result.stdout.strip() == '1 Alexandr Naumov 24 a.naumov@yssu.ru\n18 Nikolay Volkov 21 n.volkov@yssu.ru\n19 Bobr Kurwa 69 bobr@kurwa.pl'
-
-    shutil.move(os.path.join(DATA_SAMPLES_DIR, SAMPLE_DB_FILE_COPY), os.path.join(DATA_SAMPLES_DIR, SAMPLE_DB_FILE_NAME))
 
 if __name__ == '__main__':
     pytest.main()
