@@ -9,7 +9,7 @@ SAMPLE_DB_FILE_NAME = 'task007.db'
 SAMPLE_DB_FILE_COPY = './tests/task007.db'
 
 if os.path.isfile(B_FILE_PATH):
-    shutil.copy(os.path.join(DATA_SAMPLES_DIR, SAMPLE_DB_FILE_NAME), SAMPLE_DB_FILE_COPY)
+    shutil.copy(SAMPLE_DB_FILE_COPY, os.path.join(DATA_SAMPLES_DIR, SAMPLE_DB_FILE_NAME))
 
     def test_real_db_1():
         result = run([B_FILE_PATH], input='EXIT', encoding='utf-8', stdout=PIPE)
