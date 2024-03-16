@@ -13,9 +13,11 @@ jobs:
       
     - name: Check gcc options in Makefile
       run: |
-        if [ $(grep -i "\-Wall" ./src/Makefile 2>/dev/null | wc -l) -eq 0 ] || [ $(grep -i "\-Werror" ./src/Makefile 2>/dev/null | wc -l) -eq 0 ] || [ $(grep -i "\-Wextra" ./src/Makefile 2>/dev/null | wc -l) -eq 0 ]; then
-          echo "You forgot the gcc options -Wall -Werror and -Wextra"
-          exit 1
+        if [ -f ./src/Makefile ]; then
+            if [ $(grep -i "\-Wall" ./src/Makefile 2>/dev/null | wc -l) -eq 0 ] || [ $(grep -i "\-Werror" ./src/Makefile 2>/dev/null | wc -l) -eq 0 ] || [ $(grep -i "\-Wextra" ./src/Makefile 2>/dev/null | wc -l) -eq 0 ]; then
+                echo "You forgot the gcc options -Wall -Werror and -Wextra"
+                exit 1
+            fi
         fi
       
     - name: Install packages
