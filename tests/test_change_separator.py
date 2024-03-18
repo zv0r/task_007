@@ -26,7 +26,7 @@ if os.path.isfile(B_FILE_PATH):
         assert result.returncode == 0
         assert result.stdout.strip() == 'love\nhate'
 
-    def test_change_separator_4():
+    def test_change_separator_5():
         result = run([B_FILE_PATH], input='Some tricky examples\n ', encoding='utf-8', stdout=PIPE)
         assert result.returncode == 0
         assert result.stdout.strip() == 'Some tricky examples'
