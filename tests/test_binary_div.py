@@ -9,7 +9,7 @@ if os.path.isfile(B_FILE_PATH):
     def test_binary_div_1():
         result = run([B_FILE_PATH], input='abrakadabra', encoding='utf-8', stdout=PIPE)
         assert result.returncode == 0
-        assert result.stdout.strip() == 'abrakadbra\nabraka\nabr\nab\na'
+        assert result.stdout.strip() == 'abrakadabra\nabraka\nabr\nab\na'
     
     def test_binary_div_2():
         result = run([B_FILE_PATH], input='a', encoding='utf-8', stdout=PIPE)
