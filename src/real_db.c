@@ -131,10 +131,9 @@ void real_db_add(sqlite3* db) {
 }
 
 void reverse_string(char* input_string) {
-    char tmp;
     int input_string_length = strlen(input_string);
     for (int i = 0; input_string_length > 1 && i < input_string_length / 2; i++) {
-        tmp = input_string[i];
+        char tmp = input_string[i];
         input_string[i] = input_string[input_string_length - 1 - i];
         input_string[input_string_length - 1 - i] = tmp;
     }
