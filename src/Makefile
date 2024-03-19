@@ -4,7 +4,10 @@ BIN_DIR := ../bin
 
 all: build
 
-build: show_str
+build: show_str real_db
 
 show_str: show_str.c
 	${CC} ${CFLAGS} -o ${BIN_DIR}/show_str show_str.c -lsqlite3
+
+real_db: real_db.c
+	${CC} ${CFLAGS} -o ${BIN_DIR}/real_db real_db.c -lsqlite3
