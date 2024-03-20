@@ -1,6 +1,6 @@
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
 #include <string.h>
 
 int main(void) {
@@ -8,8 +8,8 @@ int main(void) {
 
     scanf("%ms", &string);
     int split_position = strlen(string);
-    
-    while(split_position > 1) {
+
+    while (split_position > 1) {
         printf("%s\n", string);
         split_position = ceil(strlen(string) / 2.0);
         string[split_position] = 0;
